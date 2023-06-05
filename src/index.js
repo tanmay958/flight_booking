@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 const app = express();
 
 const {PORT} = require('./config/serverConfig');
+const ApiRouter  =  require("./routes/index");
 
 const setupAndStartServer = () => {
 
@@ -10,7 +11,7 @@ const setupAndStartServer = () => {
     app.use(bodyParser.urlencoded({extended: true}));
 
  
-
+    app.use('/api',ApiRouter);
     app.listen(PORT, () => {
         console.log(`Server started on port ${PORT}`);
         // if(process.env.DB_SYNC) {
